@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Speed at which the bullet moves upward
+    public float speed = 5f;
+    // Time in seconds before the bullet is automatically destroyed
+    public float lifeTime = 3f;
+
     void Start()
     {
-        
+        // Schedule the bullet to be destroyed after 'lifeTime' seconds
+        Destroy(gameObject, lifeTime);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // Move the bullet upward each frame
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 }
